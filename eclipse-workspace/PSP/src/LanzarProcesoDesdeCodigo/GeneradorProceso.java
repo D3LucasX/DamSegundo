@@ -1,0 +1,18 @@
+package LanzarProcesoDesdeCodigo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GeneradorProceso {
+
+	public static void ejecutar(String ruta) {
+		List <String> nombreArgumentos = new ArrayList(); 
+		ProcessBuilder pb = new ProcessBuilder(ruta);
+		try {
+			//Process proceso = pb.start(); es lo mismo que pb.start();
+			pb.start();
+		}catch(Exception e) { // La minima excepcion que podemos tratar, engloba a todas las excepciones.
+			e.printStackTrace(); // Con esto sacamos la traza del error, también podemos poner nosotros un mensaje
+		}
+	}
+}

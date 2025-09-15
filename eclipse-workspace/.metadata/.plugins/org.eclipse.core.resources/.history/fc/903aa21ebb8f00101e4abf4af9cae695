@@ -1,0 +1,17 @@
+package EjerciciosPOO;
+
+public class Modulo {
+	String nombre;
+	int numero_horas;
+	Profesor profesor;
+	boolean esConvidable;
+	public Modulo(String nombre, int numero_horas, Profesor profesor, boolean esConvidable) {
+		super();
+		this.nombre = nombre;
+		this.numero_horas = numero_horas;
+		this.profesor = profesor;
+		this.esConvidable = esConvidable;
+	}
+	
+	
+}

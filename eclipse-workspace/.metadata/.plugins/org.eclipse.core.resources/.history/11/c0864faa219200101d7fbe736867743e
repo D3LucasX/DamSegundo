@@ -1,0 +1,21 @@
+package Ficheros;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class Ejercicios01_01Ficheros_EJ2 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Que fichero desea buscar y borrar?");
+		String Busqueda = entrada.nextLine();
+		
+		File fichero = new File(Busqueda);
+		if (fichero.exists()) {
+			fichero.delete();
+		}else {
+			System.out.println("no se ha encontrado ese fichero.");
+		}
+	}
+
+}

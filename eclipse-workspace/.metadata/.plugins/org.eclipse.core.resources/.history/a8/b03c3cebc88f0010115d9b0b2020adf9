@@ -1,0 +1,10 @@
+package LanzarProcesoDesdeCodigo;
+
+public class LanzarBlocNotas {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

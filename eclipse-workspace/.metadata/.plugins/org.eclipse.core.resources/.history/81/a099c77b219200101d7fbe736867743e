@@ -1,0 +1,10 @@
+package Ficheros;
+
+public class Ejercicios01_01Ficheros_EJ2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

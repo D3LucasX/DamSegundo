@@ -1,0 +1,25 @@
+package Ficheros;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Ejercicios01_01Ficheros_EJ1 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Dime de que directorio quieres listar los elementos: ");
+		String directorio = entrada.nextLine();
+		File fichero = new File(directorio);
+		
+		if(fichero.exists()) {
+		
+				System.out.println(fichero.listFiles());
+			
+		}else {
+				fichero.mkdir();
+				System.out.println("No existia ese directorio, lo hemos creado correctamente.");
+		
+		}
+	}
+
+}

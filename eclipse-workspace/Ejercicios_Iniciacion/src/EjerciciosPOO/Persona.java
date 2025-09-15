@@ -1,0 +1,23 @@
+package EjerciciosPOO;
+
+public class Persona {
+	String dni;
+	String nombre;
+	String apellidos;
+	double salario;
+	
+	public Persona(String dni, String nombre, String apellidos, double salario) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.salario = salario;
+	}
+	public Persona(String dni, String nombre, String apellidos) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		
+	}
+}
