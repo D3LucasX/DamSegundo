@@ -3,9 +3,9 @@ package LanzarProcesoDesdeCodigo;
 public class Principal {
 
 	public static void main(String[] args) {
-		String ruta = "C:/windows/system32/notepad.exe";
+		
 		GeneradorProceso lanzador = new GeneradorProceso();
-		lanzador.ejecutar(ruta);
+		lanzador.ejecutar();
 		System.out.println("Proceso ejecutado!!!");
 	}
 

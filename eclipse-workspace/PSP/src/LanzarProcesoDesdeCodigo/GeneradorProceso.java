@@ -5,9 +5,12 @@ import java.util.List;
 
 public class GeneradorProceso {
 
-	public static void ejecutar(String ruta) {
+	public static void ejecutar() {
 		List <String> nombreArgumentos = new ArrayList(); 
-		ProcessBuilder pb = new ProcessBuilder(ruta);
+		nombreArgumentos.add("C:/MyCode/SumarDosNumeros.exe");// EXAMPLE OF A PROGRAM PATH
+		nombreArgumentos.add("18");
+		nombreArgumentos.add("28");
+		ProcessBuilder pb = new ProcessBuilder();
 		try {
 			//Process proceso = pb.start(); es lo mismo que pb.start();
 			pb.start();
