@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 2025/09/16-20:45:27.875 3d34 Reusing MANIFEST C:\Users\d3luc\Documents\RepositorioDam_SegundoCurso\DamSegundo\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
 2025/09/16-20:45:27.880 3d34 Recovering log #3
 2025/09/16-20:45:27.881 3d34 Reusing old log C:\Users\d3luc\Documents\RepositorioDam_SegundoCurso\DamSegundo\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+=======
+2025/09/17-09:13:17.233 3410 Reusing MANIFEST C:\Users\DAM\DamSegundo\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2025/09/17-09:13:17.260 3410 Recovering log #3
+2025/09/17-09:13:17.264 3410 Reusing old log C:\Users\DAM\DamSegundo\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+>>>>>>> 726d520 (cambios)
