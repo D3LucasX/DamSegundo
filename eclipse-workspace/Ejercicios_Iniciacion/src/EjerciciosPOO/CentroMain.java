@@ -199,4 +199,5 @@ public class CentroMain {
 		
 	}
 //TODO terminar lo del alumno 
+	// anki pro y programa tandem
 }
