@@ -20,6 +20,15 @@ public class Profesor extends Persona{
 	public void setEsTutor(boolean esTutor) {
 		this.esTutor = esTutor;
 	}
+	@Override
+	public String toString() {
+		return "Profesor [num_asignaturas=" + num_asignaturas + ", esTutor=" + esTutor + ", dni=" + dni + ", nombre="
+				+ nombre + ", apellidos=" + apellidos + ", salario=" + salario + ", getNum_asignaturas()="
+				+ getNum_asignaturas() + ", isEsTutor()=" + isEsTutor() + ", getDni()=" + getDni() + ", getNombre()="
+				+ getNombre() + ", getApellidos()=" + getApellidos() + ", getSalario()=" + getSalario()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	
 	
 	

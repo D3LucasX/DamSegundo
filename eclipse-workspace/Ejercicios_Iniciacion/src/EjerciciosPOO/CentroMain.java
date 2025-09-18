@@ -10,8 +10,10 @@ public class CentroMain {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		int opcion = 0;
+		String repetir = "";
 		ArrayList<Profesor> listaProfes = new ArrayList<>();
 		ArrayList<Alumno> listaAlumnos = new ArrayList<>();
+		ArrayList<Modulo> listaModulos = new ArrayList<>();
 		
 		
 		Profesor profesor1 = new Profesor("090330405B", "Adrian", "pepe", 1222.3, 3, true);
@@ -27,34 +29,64 @@ public class CentroMain {
 		
 		Modulo Dam = new Modulo("Desarrollo de aplicaciones multiplatacorma", 12, profesor2, false);
 		Modulo Teleco = new Modulo("Telecomunicaciones", 12, profesor1, true);
+		listaModulos.add(Teleco);
+		listaModulos.add(Dam);
 		
 		Alumno alumno1 = new Alumno("90248930m", "jose", "de lucas", "23-3-4", Sexo.MASCULINO, false);
 		Alumno alumno2 = new Alumno("90248930m", "jose", "de lucas", "23-3-4", Sexo.MASCULINO, false);
+		listaAlumnos.add(alumno1);
+		listaAlumnos.add(alumno2);
 		
 		alumno1.añadirModulo(Dam);
 		alumno2.añadirModulo(Teleco);
 		do {
-			mostrarMenu();
-			opcion = entrada.nextInt();
-			entrada.nextLine();
-		}while(opcion < 0 && opcion > 10);
-		switch(opcion) {
-		
-		case 1:
-			Alumno alumno3 = darAltaAlumno(entrada);
-			for (Alumno alum : listaAlumnos) {
-				System.out.println(alumno3.toString());
+			do {
+				mostrarMenu();
+				opcion = entrada.nextInt();
+				entrada.nextLine();
+			}while(opcion < 0 || opcion > 10);
+			switch(opcion) {
+			
+			case 1:
+				Alumno nuevoAlumno = darAltaAlumno(entrada);
+				listaAlumnos.add(nuevoAlumno);
+				break;
+			case 2:
+				Profesor nuevoProfesor = darAltaProfesor(entrada);
+				listaProfes.add(nuevoProfesor);
+				break;
+			case 3: 
+				Modulo moduloNuevo =crearModulo(entrada, listaProfes);
+				listaModulos.add(moduloNuevo);
+				break;
+			case 4:
+				for (Alumno alum : listaAlumnos) {
+					System.out.println(alum.toString());
+				}
+				break;
+			case 5:
+				for (Profesor prof : listaProfes) {
+					System.out.println(prof.toString());
+				}
+				break;
+			case 6:
+				for (Modulo modulo : listaModulos) {
+					System.out.println(modulo.toString());
+				}
+				break;
+			case 7:
+				System.out.println("Saliendo...");
+				repetir = "si"; // PARA TERMINAR EL BUICLE
+				break;
+				default:
+					System.out.println("Algo salio mal, seleccione una opcion váliada");
 			}
-			break;
-		case 2:
-			darAltaProfesor(entrada);
-			break;
-		case 3: 
-			crearModulo(entrada, listaProfes);
-			break;
-			default:
-				System.out.println("Saliendo");
-		}
+			while(!repetir.equalsIgnoreCase("si") && !repetir.equalsIgnoreCase("no")) {
+				System.out.println("Seguro que quiere salir? (si o no)");
+				repetir = entrada.nextLine();
+			}
+			
+		}while(repetir.equalsIgnoreCase("no"));
 		
 	}
 	
@@ -63,7 +95,10 @@ public class CentroMain {
 		System.out.println("1. Agregar alumno.");
 		System.out.println("2. Agregar profesor. ");
 		System.out.println("3. Agregar módlo. ");
-		System.out.println("4. Salir. ");
+		System.out.println("4. Mostrar Alumnos. ");
+		System.out.println("5. Mostrar Profesores. ");
+		System.out.println("6. Mostrar los módulos. ");
+		System.out.println("7. Salir. ");
 	}
 	
 	public static Profesor darAltaProfesor(Scanner entrada) {
@@ -92,7 +127,7 @@ public class CentroMain {
 				System.out.println("Ha ocurrido un error, no se ha podido determinar si el profesor es tutor o no.");
 				System.out.println("Intentelo de nuevo");
 			}
-		}while(!esTutor.equalsIgnoreCase("si") || esTutor.equalsIgnoreCase("no"));
+		}while(!esTutor.equalsIgnoreCase("si") && !esTutor.equalsIgnoreCase("no"));
 		Profesor nuevoProfesor = new Profesor(dniNuevo, nombreNuevo, apellidoNuevo, salarioNuevo, numeroAsignaturas, tutor);
 		return nuevoProfesor;
 	}
@@ -134,7 +169,7 @@ public class CentroMain {
 			}else {
 				System.out.println("No se ha podido asignar el sexo del alumno, intentelo de nuevo.");
 			}
-		}while(!sexo.equalsIgnoreCase("masculino") || !sexo.equalsIgnoreCase("femenino"));
+		}while(!sexo.equalsIgnoreCase("masculino") && !sexo.equalsIgnoreCase("femenino"));
 		nuevoAlumno.setSexo(genero);
 		do {
 			System.out.println("Es repartidor?: (si o no)");
@@ -152,11 +187,10 @@ public class CentroMain {
 	}
 	
 	public static Modulo crearModulo(Scanner entrada,ArrayList<Profesor> listaProfes) {
-		int encontrado = 0;
+		boolean encontrado = false;
 		String convidable = "";
 		boolean esConvidable = false;
 		Modulo moduloNuevo = new Modulo(null, 0, null, false);
-		Profesor dniProfeAbuscar = new Profesor(null, null, null, 0, 0, false);
 		System.out.println("Introduce el nombre del nuevo Módulo: ");
 		String nombreNuevo = entrada.nextLine();
 		moduloNuevo.setNombre(nombreNuevo);
@@ -168,15 +202,16 @@ public class CentroMain {
 			System.out.println("Introduce el numero de DNI del profesor que está asociado a este módulo: ");
 			String dniProfesor = entrada.nextLine();
 			for (Profesor prof : listaProfes) {
-				if (dniProfeAbuscar.getDni().equalsIgnoreCase(dniProfesor)) {
-					moduloNuevo.setProfesor(dniProfeAbuscar);
-					encontrado = 1;
-				}else {
+				if (prof.getDni().equalsIgnoreCase(dniProfesor)) {
+					moduloNuevo.setProfesor(prof);
+					encontrado = true;
+				}
+				if (!encontrado) {
 					System.out.println("no se ha encontrado a ese profesor");
-					encontrado = 0;
+					encontrado = false;
 				}
 			}
-		}while(encontrado == 0);
+		}while(encontrado == false );
 		do {
 			System.out.println("El modulo es convidable?");
 			convidable =entrada.nextLine();
@@ -198,6 +233,6 @@ public class CentroMain {
 	    return matcher.matches();
 		
 	}
-//TODO terminar lo del alumno 
-	// anki pro y programa tandem
+
+	// anki pro y programa tandem PARA PPRACTICAR EL INGLES
 }
