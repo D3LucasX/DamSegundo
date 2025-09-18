@@ -5,6 +5,7 @@ public class Modulo {
 	int numero_horas;
 	Profesor profesor;
 	boolean esConvidable;
+	
 	public Modulo(String nombre, int numero_horas, Profesor profesor, boolean esConvidable) {
 		super();
 		this.nombre = nombre;
