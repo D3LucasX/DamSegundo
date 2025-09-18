@@ -2,6 +2,8 @@ package EjerciciosPOO;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class CentroMain {
 
@@ -112,7 +114,7 @@ public class CentroMain {
 		System.out.println("Introduce los paellidos del nuevo Alumno: ");
 		String apellidoNuevo = entrada.nextLine();
 		do {
-			System.out.println("introduce la fecha de nacimiento del alumno: (xx-xx-xxxx)");
+			System.out.println("introduce la fecha de nacimiento del alumno: (xx/xx/xxxx)");
 			fechaNacimiento = entrada.nextLine();
 			fechaAdecuada = comprobarFecha(fechaNacimiento);
 			if (fechaAdecuada) {
@@ -190,9 +192,11 @@ public class CentroMain {
 	
 
 	public static boolean comprobarFecha(String fecha) {
-		boolean esAdecuada = false;
-		String regex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\\d{4}$";
-		return fecha.matches(regex);
+		String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+	    Pattern pattern = Pattern.compile(regex);
+	    Matcher matcher = pattern.matcher(fecha);
+	    return matcher.matches();
+		
 	}
 //TODO terminar lo del alumno 
 }
