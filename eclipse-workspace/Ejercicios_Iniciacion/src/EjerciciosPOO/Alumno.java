@@ -47,5 +47,17 @@ public class Alumno extends Persona{
 	public void setModulos(ArrayList<Modulo> modulos) {
 		this.modulos = modulos;
 	}
+
+	@Override
+	public String toString() {
+		return "Alumno [fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", esRepartidor=" + esRepartidor
+				+ ", modulos=" + modulos + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", salario=" + salario + ", getFechaNacimiento()=" + getFechaNacimiento() + ", getSexo()=" + getSexo()
+				+ ", isEsRepartidor()=" + isEsRepartidor() + ", getModulos()=" + getModulos() + ", getDni()=" + getDni()
+				+ ", getNombre()=" + getNombre() + ", getApellidos()=" + getApellidos() + ", getSalario()="
+				+ getSalario() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+	
 	
 }

@@ -7,7 +7,9 @@ public class CentroMain {
 
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
+		int opcion = 0;
 		ArrayList<Profesor> listaProfes = new ArrayList<>();
+		ArrayList<Alumno> listaAlumnos = new ArrayList<>();
 		
 		
 		Profesor profesor1 = new Profesor("090330405B", "Adrian", "pepe", 1222.3, 3, true);
@@ -29,6 +31,37 @@ public class CentroMain {
 		
 		alumno1.añadirModulo(Dam);
 		alumno2.añadirModulo(Teleco);
+		do {
+			mostrarMenu();
+			opcion = entrada.nextInt();
+			entrada.nextLine();
+		}while(opcion < 0 && opcion > 10);
+		switch(opcion) {
+		
+		case 1:
+			Alumno alumno3 = darAltaAlumno(entrada);
+			for (Alumno alum : listaAlumnos) {
+				System.out.println(alumno3.toString());
+			}
+			break;
+		case 2:
+			darAltaProfesor(entrada);
+			break;
+		case 3: 
+			crearModulo(entrada, listaProfes);
+			break;
+			default:
+				System.out.println("Saliendo");
+		}
+		
+	}
+	
+	public static void mostrarMenu() {
+		System.out.println("Elija la opcion que desee: (Marque el numero de la opción)");
+		System.out.println("1. Agregar alumno.");
+		System.out.println("2. Agregar profesor. ");
+		System.out.println("3. Agregar módlo. ");
+		System.out.println("4. Salir. ");
 	}
 	
 	public static Profesor darAltaProfesor(Scanner entrada) {
@@ -82,12 +115,12 @@ public class CentroMain {
 			System.out.println("introduce la fecha de nacimiento del alumno: (xx-xx-xxxx)");
 			fechaNacimiento = entrada.nextLine();
 			fechaAdecuada = comprobarFecha(fechaNacimiento);
-			if (fechaAdecuada == true) {
+			if (fechaAdecuada) {
 				System.out.println("Fecha válida.");
 			}else {
 				System.out.println("Fecha inválida, inténtelo de nuevo.");
 			}
-		}while(fechaAdecuada == false);
+		}while(!fechaAdecuada);
 		nuevoAlumno.setFechaNacimiento(fechaNacimiento);
 		do {
 			System.out.println("Introduzca el sexo del alumno: ");
@@ -111,7 +144,7 @@ public class CentroMain {
 			}else {
 				System.out.println("No se ha podido determinar si es repartidor, intentelo de nuevo.");
 			}
-		}while(!sexo.equalsIgnoreCase("masculino") || !sexo.equalsIgnoreCase("femenino"));
+		}while(!sexo.equalsIgnoreCase("masculino") && !sexo.equalsIgnoreCase("femenino"));
 		nuevoAlumno.setEsRepartidor(esRepartidor);
 		return nuevoAlumno;
 	}
@@ -122,7 +155,7 @@ public class CentroMain {
 		boolean esConvidable = false;
 		Modulo moduloNuevo = new Modulo(null, 0, null, false);
 		Profesor dniProfeAbuscar = new Profesor(null, null, null, 0, 0, false);
-		System.out.println("Introduce el nombre del nuevo profesor: ");
+		System.out.println("Introduce el nombre del nuevo Módulo: ");
 		String nombreNuevo = entrada.nextLine();
 		moduloNuevo.setNombre(nombreNuevo);
 		System.out.println("introduzca el numero de horas que tenga el curso: ");
@@ -145,20 +178,21 @@ public class CentroMain {
 		do {
 			System.out.println("El modulo es convidable?");
 			convidable =entrada.nextLine();
-		}while();
-		
+		}while(!convidable.equalsIgnoreCase("si") && !convidable.equalsIgnoreCase("no"));
+		if (convidable.equalsIgnoreCase("si")) {
+			esConvidable = true;
+		}else {
+			esConvidable = false;
+		}
+		moduloNuevo.setEsConvidable(esConvidable);
+		return moduloNuevo;
 	}
 	
 
 	public static boolean comprobarFecha(String fecha) {
 		boolean esAdecuada = false;
-		String regex = "/[1-3]{2}-[0-1]{2}-0-9{4}/";
-		if (fecha.matches(regex)) {
-			esAdecuada = true;
-		}else {
-			esAdecuada = false;
-		}
-		return esAdecuada;
+		String regex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\\d{4}$";
+		return fecha.matches(regex);
 	}
-
+//TODO terminar lo del alumno 
 }
