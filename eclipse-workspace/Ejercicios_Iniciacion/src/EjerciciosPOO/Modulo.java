@@ -37,6 +37,14 @@ public class Modulo {
 	public void setEsConvidable(boolean esConvidable) {
 		this.esConvidable = esConvidable;
 	}
+	@Override
+	public String toString() {
+		return "Modulo [nombre=" + nombre + ", numero_horas=" + numero_horas + ", profesor=" + profesor
+				+ ", esConvidable=" + esConvidable + ", getNombre()=" + getNombre() + ", getNumero_horas()="
+				+ getNumero_horas() + ", getProfesor()=" + getProfesor() + ", isEsConvidable()=" + isEsConvidable()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	
 	
 	
