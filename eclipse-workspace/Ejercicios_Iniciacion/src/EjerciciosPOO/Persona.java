@@ -1,12 +1,14 @@
 package EjerciciosPOO;
 
-public class Persona {
+//Al ser abstractos no se puede instanciar
+public abstract class Persona {
 	String dni;
 	String nombre;
 	String apellidos;
 	double salario;
 	
-	public Persona(String dni, String nombre, String apellidos, double salario) {
+	// La clase es privada
+	private Persona(String dni, String nombre, String apellidos, double salario) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -38,9 +40,14 @@ public class Persona {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public double getSalario() {
-		return salario;
-	}
+	
+	// Clases hijas y las del paquete lo ven si son protected.
+	// Con esto ahora lo que deberiamos de hacer en cada clase, deterinar como se calcularia el salario en función del
+	// tipo de persona. No se va a calcular igual el salario de un profesor que de un directivo. Así que se tiene
+	// que hacer una funcion get salario en cada clase (profesor, administracion...) y que en ella este como se calcula 
+	// su salario.
+	protected abstract double getSalario();
+	
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
