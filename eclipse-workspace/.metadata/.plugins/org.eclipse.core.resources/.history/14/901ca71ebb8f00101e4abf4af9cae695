@@ -1,7 +1,0 @@
-package EjerciciosPOO;
-
-enum Estudios {BAJO, MEDIO, AVANZADO};
-public class Administracion extends Persona{
-	Estudios eestudios;
-	int antiguedad;
-}

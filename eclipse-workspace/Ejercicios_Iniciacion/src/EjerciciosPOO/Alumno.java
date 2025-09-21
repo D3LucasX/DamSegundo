@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 enum Sexo{MASCULINO,fEMENINO};
 
+// El alumno ya no podría heredar de persona porque al no tener salario, si no haces una funcion get salario
+// la clase se comvierte en abstracto.
 public class Alumno extends Persona{
 	String fechaNacimiento;
 	Sexo sexo;

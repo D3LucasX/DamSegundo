@@ -1,6 +1,0 @@
-package EjerciciosPOO;
-
-public class Profesor extends Persona{
-	int num_asignaturas;
-	boolean esTutor;
-}
