@@ -12,7 +12,8 @@ public class Ejercicios01_01Ficheros_EJ2 {
 		
 		File fichero = new File(Busqueda);
 		if (fichero.exists()) {
-			fichero.delete();
+			fichero.delete(); // Se puede poner en la condicion del if, a parte de borrar el archivo, devuelve un booleano para saber si la accion 
+							  // Se ha completado con éxito
 			System.out.println("Fichero borrado correctamente.");
 		}else {
 			System.out.println("no se ha encontrado ese fichero.");

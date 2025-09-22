@@ -25,7 +25,7 @@ public static List<Integer> primoHasta500(){
 	    return primos;
 }
 	public static void main(String[] args) {
-		File carpeta = new File("C:/Users/d3luc/Downloads");
+		File carpeta = new File("C:/Users/DAM/Downloads");
 		File nuevoFichero = new File(carpeta,"primos");
 		try {
 			if (nuevoFichero.createNewFile()) {
@@ -35,7 +35,7 @@ public static List<Integer> primoHasta500(){
 			System.out.println("Error al crear el fichero.");
 			ioe.getMessage();
 		}
-		
+		// lO MEJOR ES QUE ESTE ESTE TRY CATCH DENTRO DEL OTRO TRY CATCH, PARA IR ESPECIFICANDO LOS ERRORES, ESTA EN LA CORRECCIONE QUE SUBE BEA
 		try(BufferedWriter writer = new BufferedWriter(new FileWriter(nuevoFichero))){
 			List<Integer> primos = primoHasta500();
 			
