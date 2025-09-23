@@ -1,11 +1,19 @@
 package LanzarProceso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LanzarCommando {
 
 	public static void main(String[] args) {
-		String ruta = "ipconfig";
+		
 		GeneradorProceso lanzador = new GeneradorProceso();
-			lanzador.ejecutar(ruta); 
+		String ruta = "cmd.exe";
+		String [] argumentos = {
+				"/C",
+				"start"
+		};
+			lanzador.ejecutar(ruta, argumentos); 
 			System.out.println("Proceso ejecutado!!!");
 	}
 

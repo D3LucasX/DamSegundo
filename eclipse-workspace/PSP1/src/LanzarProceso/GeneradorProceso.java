@@ -1,47 +1,40 @@
 package LanzarProceso;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GeneradorProceso {
-		public static void ejecutar(String ruta) {
-			List <String> nombreArgumentos = new ArrayList(); 
+		public static void ejecutar(String ruta, String [] args) {
 			if (ruta == null || ruta.isEmpty()) {
 				System.out.println("Falta elnombre del comando");
 				System.exit(1);
 			}
-			File directorio = new File(ruta);
-			nombreArgumentos.add(ruta);// EXAMPLE OF A PROGRAM PATH
-			ProcessBuilder pb = new ProcessBuilder(nombreArgumentos);
-			pb.command(nombreArgumentos); // COMAND IS THE NAME OF THE EXECUTABLE
-			// Esto hace que el proceso herede la entrada salida estandar del proceso padre. Así podemos ver el resulado del comando.
-			//(ipconfig en este caso)
-			pb.inheritIO();
+			
+			
+			List<String> comando = new ArrayList<>();
+			comando.add(ruta);
+			// Comprobamos que la lista comando existe
+			if(comando != null) {
+				// Convertimos el array en una lista de Strings para poder usar el metodo addAll
+				comando.addAll(Arrays.asList(args));
+			}
+			
+			ProcessBuilder pb = new ProcessBuilder(comando);
 			
 			try {
 				Process proceso = pb.start(); //es lo mismo que pb.start();
-				// Ahora toca obtener el codigo de retorno para saber si se ha ejecutado bien el programa y para ello esperamos a que se 
-				// acabe el proceso, por eso debemos de esperar a que acabe con:
-				int codigoRetorno = proceso.waitFor();
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				System.out.println("El comando devuelve " + codigoRetorno);
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-				if (codigoRetorno==0) {
-					System.out.println("Ejecucion correcta.");
-				}else {
-					System.out.println("Ejecucion con errores");
-				}
+				
+				
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+				System.out.println("CMD de Windows lanzado en una nueva ventana");
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+				
+		
 			}catch(IOException ioe) { // La minima excepcion que podemos tratar, engloba a todas las excepciones.
 				System.out.println("Error durante la ejecución del programa");
-				System.out.println("INFORMACION ADICIONAL");
 				ioe.printStackTrace(); // Con esto sacamos la traza del error, también podemos poner nosotros un mensaje
-				System.exit(2);
-				
-			}catch(InterruptedException ie) { // Captura la traza de error y la eniamos a el STDERR a la salida estandar de error.
-				System.err.println("Proceso interrumpido. ");
-				System.exit(3);
 			}
 		}
 	}
