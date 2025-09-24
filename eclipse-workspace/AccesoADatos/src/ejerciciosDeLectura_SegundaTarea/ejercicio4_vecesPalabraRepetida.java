@@ -10,19 +10,19 @@ import java.util.Map;
 public class ejercicio4_vecesPalabraRepetida {
 
 	public static void main(String[] args) {
-		File ficheroAleer = new File("C:/Users/d3luc/Downloads/frutas.txt");
+		File ficheroAleer = new File("C:/Users/DAM/Downloads/frutas(1).txt");
 		try {
 			BufferedReader buffer = new BufferedReader(new FileReader(ficheroAleer));
 			// Creamos un HasMap para contar las repeticiones
 			Map<String, Integer> contador = new HashMap<>();
-			String linea;
+			String linea = "";
+			linea = linea.toLowerCase();
 			
-			while ((linea = buffer.readLine()) != null) {
+			while ((linea= buffer.readLine()) != null) {
 				//  para separar las palabras usamos \\s+ que es cualquier caracter de espacio
-				// en clanco, incluidos los saltos de linea, y el mas es uno o mas
+				// en blanco, incluidos los saltos de linea, y el mas es uno o mas
 				
 				String[] palabras = linea.split("\\s+"); 
-				
 				
 				// Recorre el array y cuenta cada palabra
 				// .getOrDefault(palabra, 0) + 1 --> busca la palabra, si esta, 
