@@ -14,18 +14,25 @@ public class CentroMain {
 		ArrayList<Profesor> listaProfes = new ArrayList<>();
 		ArrayList<Alumno> listaAlumnos = new ArrayList<>();
 		ArrayList<Modulo> listaModulos = new ArrayList<>();
+		ArrayList<Directivo> listaDirectivos = new ArrayList<>();
+		ArrayList<Administracion> listaAdministradores = new ArrayList<>();
 		
+		Directivo directivo1 = new Directivo ("09034823V", "Andrei", "Leonardo", 12343.34, true, EjerciciosPOO.Turno.AFTERNOON);
+		Directivo directivo2 = new Directivo ("09034823V", "PEPEPEPEPE", "DANILO", 12333.34, true, EjerciciosPOO.Turno.AFTERNOON);
+		listaDirectivos.add(directivo1);
+		listaDirectivos.add(directivo2);
 		
 		Profesor profesor1 = new Profesor("090330405B", "Adrian", "pepe", 1222.3, 3, true);
 		Profesor profesor2 = new Profesor("09033434343B", "Pepe", "Luis", 13456.3, 3, false);
+		Profesor profesor3 = new Profesor("099584950843N", "Leonardo", "Marescutti", 20000.77, 5, true );
 		listaProfes.add(profesor1);
 		listaProfes.add(profesor2);
+		listaProfes.add(profesor3);
 		
 		Administracion administrador1 = new Administracion("09090990333", "Andrea", "Luisa", 1222223.2, Estudios.AVANZADO, 12);
 		Administracion administrador2 = new Administracion("09095689333", "Raton", "Leo", 12254223.2, Estudios.BAJO, 32);
-		
-		Directivo directivo1 = new Directivo("09090333920393C","Daniel","Garcia",12223.33, false, Turno.AFTERNOON);
-		Directivo directivo2 = new Directivo("043434333920393C","Ruben","Garcia",12223.33, false, Turno.MORNING);
+		listaAdministradores.add(administrador1);
+		listaAdministradores.add(administrador2);
 		
 		Modulo Dam = new Modulo("Desarrollo de aplicaciones multiplatacorma", 12, profesor2, false);
 		Modulo Teleco = new Modulo("Telecomunicaciones", 12, profesor1, true);
@@ -75,6 +82,15 @@ public class CentroMain {
 				}
 				break;
 			case 7:
+				compareToProf(listaProfes);
+				break;
+			case 8:
+				compareToDir(listaDirectivos);
+				break;
+			case 9:
+				compareToAdm(listaAdministradores);
+				break;
+			case 10:
 				System.out.println("Saliendo...");
 				repetir = "si"; // PARA TERMINAR EL BUICLE
 				break;
@@ -97,8 +113,11 @@ public class CentroMain {
 		System.out.println("3. Agregar módlo. ");
 		System.out.println("4. Mostrar Alumnos. ");
 		System.out.println("5. Mostrar Profesores. ");
-		System.out.println("6. Mostrar los módulos. ");
-		System.out.println("7. Salir. ");
+		System.out.println("6. Mostrar los módulos. ");	
+		System.out.println("7. Obtener el profesor que mas cobra.");
+		System.out.println("8. Obtener el directivo que mas cobra. ");
+		System.out.println("9. Obtener el Administrador que mas cobra. ");
+		System.out.println("10. Salir. ");
 	}
 	
 	public static Profesor darAltaProfesor(Scanner entrada) {
@@ -231,6 +250,43 @@ public class CentroMain {
 	    Pattern pattern = Pattern.compile(regex);
 	    Matcher matcher = pattern.matcher(fecha);
 	    return matcher.matches();
+		
+	}
+	
+	public static void compareToProf(ArrayList<Profesor> listaProfes) {
+		// al dejar null le estamos diciendo que no tenemos hecho el comparator que es una interfaz que te permite ordenarpor cosas bastante
+		// mas específicas que comparable, comparable solo compara por datos primitivos, para poder usar comparable hay que 
+		// tener la interfaz creada en la clase padre
+		listaProfes.sort(null);
+		for (Profesor prof : listaProfes) {
+			System.out.println(prof.toString());
+		}
+		System.out.println("El directivo que mas cobra es: " + listaProfes.get(0));
+		
+	}
+	public static void compareToDir(ArrayList<Directivo> listaDirectivos) {
+		// al dejar null le estamos diciendo que no tenemos hecho el comparator que es una interfaz que te permite ordenarpor cosas bastante
+		// mas específicas que comparable, comparable solo compara por datos primitivos, para poder usar comparable hay que 
+		// tener la interfaz creada en la clase padre
+		listaDirectivos.sort(null);
+		for (Directivo dir : listaDirectivos) {
+			System.out.println(dir.toString());
+			
+		}
+		System.out.println("El directivo que mas cobra es: " + listaDirectivos.get(0));
+		
+	}
+	
+	public static void compareToAdm(ArrayList<Administracion> listaAdministradores) {
+		// al dejar null le estamos diciendo que no tenemos hecho el comparator que es una interfaz que te permite ordenarpor cosas bastante
+		// mas específicas que comparable, comparable solo compara por datos primitivos, para poder usar comparable hay que 
+		// tener la interfaz creada en la clase padre
+		listaAdministradores.sort(null);
+		for (Administracion adm : listaAdministradores) {
+			System.out.println(adm.toString());
+			
+		}
+		System.out.println("El directivo que mas cobra es: " + listaAdministradores.get(0));
 		
 	}
 

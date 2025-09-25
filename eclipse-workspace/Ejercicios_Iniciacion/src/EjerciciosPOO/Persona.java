@@ -1,14 +1,14 @@
 package EjerciciosPOO;
 
 //Al ser abstractos no se puede instanciar
-public abstract class Persona {
-	String dni;
-	String nombre;
-	String apellidos;
-	double salario;
+abstract class Persona implements Comparable<Persona> {
+	protected String dni;
+	protected String nombre;
+	protected String apellidos;
+	protected double salario;
 	
 	// La clase es privada
-	private Persona(String dni, String nombre, String apellidos, double salario) {
+	public Persona(String dni, String nombre, String apellidos, double salario) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -50,6 +50,13 @@ public abstract class Persona {
 	
 	public void setSalario(double salario) {
 		this.salario = salario;
+	}
+	public int compareTo(Persona p) {
+		if(salario>p.getSalario())
+			return 1;
+		if(salario < p.getSalario())
+			return -1;
+		return 0;
 	}
 	
 }

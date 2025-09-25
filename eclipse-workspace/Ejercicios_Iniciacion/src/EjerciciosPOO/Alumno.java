@@ -49,6 +49,7 @@ public class Alumno extends Persona{
 	public void setModulos(ArrayList<Modulo> modulos) {
 		this.modulos = modulos;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -59,6 +60,12 @@ public class Alumno extends Persona{
 				+ ", getNombre()=" + getNombre() + ", getApellidos()=" + getApellidos() + ", getSalario()="
 				+ getSalario() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
+	}
+
+	@Override
+	protected double getSalario() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

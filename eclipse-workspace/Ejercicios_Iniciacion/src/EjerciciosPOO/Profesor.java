@@ -30,6 +30,12 @@ public class Profesor extends Persona{
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
+	@Override
+	protected double getSalario() {
+		double salario = 1800.00;
+		salario = salario * (getNum_asignaturas() * 10);
+		return salario;
+	}
 	
 	
 	
