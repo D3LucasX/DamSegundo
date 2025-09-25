@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GenerarProceso {
 	public static void ejecutar(String ruta, String[] args) {
+		Process proceso = null;
 		List <String> nombreArgumentos = new ArrayList(); 
 		if (ruta == null || ruta.isEmpty()) {
 			System.out.println("Falta elnombre del comando");
@@ -27,6 +28,11 @@ public class GenerarProceso {
 		
 		try {
 			Process proceso = pb.start(); //es lo mismo que pb.start();
+			System.out.println("Se ha lanzado el proceso.");
+			System.out.println("El proceso padre esperara a que el hijo termine su ejecucion.");
+		}catch(IOException e) {
+				e.printStackTrace();
+		}
 			// Ahora toca obtener el codigo de retorno para saber si se ha ejecutado bien el programa y para ello esperamos a que se 
 			// acabe el proceso, por eso debemos de esperar a que acabe con:
 			int codigoRetorno = proceso.waitFor();
@@ -38,16 +44,15 @@ public class GenerarProceso {
 			}else {
 				System.out.println("Ejecucion con errores");
 			}
+		try {
+			proceso.waitFor();
 			
-		}catch(IOException ioe) { // La minima excepcion que podemos tratar, engloba a todas las excepciones.
+		}catch(InterruptedException ioe) { // La minima excepcion que podemos tratar, engloba a todas las excepciones.
 			System.out.println("Error durante la ejecución del programa");
 			System.out.println("INFORMACION ADICIONAL");
 			ioe.printStackTrace(); // Con esto sacamos la traza del error, también podemos poner nosotros un mensaje
 			System.exit(2);
 			
-		}catch(InterruptedException ie) { // Captura la traza de error y la eniamos a el STDERR a la salida estandar de error.
-			System.err.println("Proceso interrumpido. ");
-			System.exit(3);
-		}
+		
 	}
 }
