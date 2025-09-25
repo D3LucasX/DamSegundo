@@ -8,11 +8,8 @@ public class LanzarCommando {
 	public static void main(String[] args) {
 		
 		GeneradorProceso lanzador = new GeneradorProceso();
-		String ruta = "cmd.exe";
-		String [] argumentos = {
-				"/C",
-				"start"
-		};
+		String ruta = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+		String [] argumentos = {"https://github.com/D3LucasX"};
 			lanzador.ejecutar(ruta, argumentos); 
 			System.out.println("Proceso ejecutado!!!");
 	}
