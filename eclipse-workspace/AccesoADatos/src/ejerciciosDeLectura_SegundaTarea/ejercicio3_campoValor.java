@@ -8,7 +8,7 @@ import java.io.IOException;
 public class ejercicio3_campoValor {
 
 	public static void main(String[] args) {
-		File ficheroAleer = new File("C:/Users/d3luc/Downloads/Restaurants.csv");
+		File ficheroAleer = new File("C:/Users/DAM/Downloads/Restaurants.csv");
 		try {
 			FileReader lector =new FileReader(ficheroAleer);
 			BufferedReader buffer = new BufferedReader(lector);
