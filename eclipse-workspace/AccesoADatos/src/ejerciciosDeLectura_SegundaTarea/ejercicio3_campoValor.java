@@ -22,9 +22,11 @@ public class ejercicio3_campoValor {
 				// pues que el campo direccion sea alcala de henares, madrid y no
 				// campo direccion : Alcala de henares
 				// otro campo: madrid
+				
 				String[] regex = linea.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-				for (int i = 0; i < campos.length && i < regex.length; i++) {
-					System.out.println(campos[i] + ": " + regex[i].replace("\"", "").trim());
+				
+				for (int i = 0; i < campos.length; i++) {
+					System.out.println(campos[i] + ": " + regex[i].trim());
 				}
 				System.out.println("------------------------"); // separador entre registros
 			}
