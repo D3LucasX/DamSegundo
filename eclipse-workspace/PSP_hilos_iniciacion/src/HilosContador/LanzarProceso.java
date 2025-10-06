@@ -2,8 +2,6 @@ package HilosContador;
 
 import java.util.ArrayList;
 
-import hilos_join_sleep.Hilo;
-
 public class LanzarProceso {
 	private static final int NUM_HILOS = 10;
 	private static final int CUENTA_TOTAL = 100000;
@@ -19,7 +17,7 @@ public class LanzarProceso {
 			ArrayHilos[i] = hilonuevo;
 		}
 		
-		// Por cada hilo hemos bloqueado el hilo de ejecucuin principal
+		// Por cada hilo hemos bloqueado el hilo de ejecucuón principal
 		for (Thread h: ArrayHilos){
 			try {
 				h.join();
