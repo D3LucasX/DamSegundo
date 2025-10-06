@@ -22,9 +22,12 @@ public class ejercicio3_campoValor {
 				// pues que el campo direccion sea alcala de henares, madrid y no
 				// campo direccion : Alcala de henares
 				// otro campo: madrid
-				String[] regex = linea.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-				for (int i = 0; i < campos.length && i < regex.length; i++) {
-					System.out.println(campos[i] + ": " + regex[i].replace("\"", "").trim());
+				String[] regex = linea.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");     	// ?   -->   lookahead positivo:
+																						// la coma debe estar seguida de algo que cumpla 
+																						// esta condición, en este caso, que obvie
+				
+				for (int i = 0; i < campos.length; i++) {
+					System.out.println(campos[i] + ": " + regex[i].trim());
 				}
 				System.out.println("------------------------"); // separador entre registros
 			}
@@ -33,5 +36,18 @@ public class ejercicio3_campoValor {
 		}
 
 	}
+	/*try(BufferedReader buffer1 = new BufferedReader(new FileReader ("C:/Users/DAM/Downloads/Restaurants.csv"))){
+		String linea;
+		String [] encabezados ;
+		linea = buffer1.readLine();
+		encabezados = linea.split(",");
+		
+		while ((linea = buffer1.readLine()) != null) {
+			String[] partes = linea.split(",");
+			for (int i = 0; i < encabezados.length; i++) {
+				System.out.println("-" + encabezados[i] + ": " + partes[i]);
+			}
+		}
+	}*/
 
 }

@@ -21,6 +21,7 @@ public class ejercicio2_guardarescrituraScanner {
 				writer.newLine();
 				frase = entrada.nextLine();
 			}
+			writer.close();
 			System.out.println("Archivo modificado correctamente. (ruta: " + nuevoFichero.getAbsolutePath() + " )");
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
