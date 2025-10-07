@@ -6,6 +6,7 @@ public class Contador {
 	public int getCuenta() {
 		return cuenta;
 	}
+	
 	public int incremento() {
 		this.cuenta++;
 		return cuenta;
