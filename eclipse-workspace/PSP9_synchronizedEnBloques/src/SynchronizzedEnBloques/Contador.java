@@ -19,13 +19,13 @@ public class Contador {
 		}
 	}
 
-	public long contador1() {
+	public long getContador1() {
 		synchronized (lock1) {
 			return cont1;
 		}
 	}
 
-	public long contador2() {
+	public long getContador2() {
 		synchronized (lock2) {
 			return cont2;
 		}
