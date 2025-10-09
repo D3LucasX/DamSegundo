@@ -1,41 +1,41 @@
 package EncuestaConcurrencia;
 
 public class Hilo implements Runnable{
-	int numVotantes;
-	int zona;
-	int partido;
-	int voto;
-	int votosXzona = 0;
+	String zona;
 	ResultadosEncuesta resultados;
+	int numVotantes;
 	
 
-	public Hilo(String zona, int numVotantes, int voto, int partido) {
+	public Hilo(String zona, int numVotantes) {
 		super();
-		this.zona = ((int) Math.random()*4);
+		this.zona = zona;
 		this.numVotantes = numVotantes;
-		this.voto = ((int) Math.random()*2);
-		this.partido = ((int) Math.random()*4);
+		
 	}
 
 
 	@Override
 	public void run() {
-		String nombreZona = "";
-		if (zona == 0) {
-			nombreZona = "Norte";
-		}else if (zona == 1) {
-			nombreZona = "Sur";
-		}else if (zona == 2) {
-			nombreZona = "Este";
-		}else if (zona == 3) {
-			nombreZona = "Oeste";
-		}
-		
-		if (voto == 1) {
+		int pp = 0, vox = 0, pesoe = 0, nulos = 0;
+		int voto = (int) (Math.random()*3);
+		if (voto == 0) {
 			this.resultados.incementarVotos();
-			this.votosXzona++;
+			pp++;
+		}else if (voto == 1){
+			this.resultados.incementarVotos();
+			vox++;
+		}else if (voto == 2) {
+			this.resultados.incementarVotos();
+			pesoe++;
+		}else {
+			this.resultados.incementarVotos();
+			nulos++;
 		}
-		System.out.println("Votos recolectados en esta zona.");
+		System.out.printf("Votos recolectados en esta zona %s:\n", zona
+				+ "\t\t PP          : %d", pp
+				+ "\t\t VOX         :", vox
+				+ "\t\t PESOE       : %d", pesoe
+				+ "\t\t Votos nulos :", nulos);
 	}
 
 }

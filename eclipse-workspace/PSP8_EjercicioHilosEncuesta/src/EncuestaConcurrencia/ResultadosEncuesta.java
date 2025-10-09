@@ -1,14 +1,14 @@
 package EncuestaConcurrencia;
 
 public class ResultadosEncuesta {
-private int resultado = 0;
+	private int resultado = 0;
 
 
 	synchronized public int getcuenta() {
-	return this.resultado;
+		return this.resultado;
 	}
-	synchronized public int incementarVotos() {
+
+	synchronized public void incementarVotos() {
 		resultado++;
-		return resultado;
 	}
 }
