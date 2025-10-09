@@ -42,6 +42,7 @@ public class LanzarHilo {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("-----------------------------------------------------------------------------------------------");
 		System.out.printf("Los votos totales de todas las zonas son %d", resultado.getTotalVotos());
 	}
 }
