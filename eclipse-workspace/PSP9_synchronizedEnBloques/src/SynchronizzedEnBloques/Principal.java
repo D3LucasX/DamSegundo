@@ -18,8 +18,8 @@ public class Principal {
 				ioe.printStackTrace();
 			}
 		}
-		System.out.printf("\nEl número total del primer contador es: %d", contador.getContador1());
-		System.out.printf("\nEl número total del segundo contador es: %d", contador.getContador2());
+		System.out.printf("\nEl numero total del primer contador es: %d", contador.getContador1());
+		System.out.printf("\nEl numero total del segundo contador es: %d", contador.getContador2());
 		System.out.println("\nEL prograsma ha finalizado");
 	}
 

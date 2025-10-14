@@ -8,13 +8,13 @@ public class Contador {
 	private final Object lock2 = new Object(); // La parte de codigo que queramos con el synchronized.
 
 	public void incrementar1() {
-		synchronized (lock1) {
+		synchronized (lock1) { //Bloqueo
 			cont1++;
 		}
 	}
 
 	public void incrementar2() {
-		synchronized (lock2) {
+		synchronized (lock2) { // Bloqueo
 			cont2++;
 		}
 	}
