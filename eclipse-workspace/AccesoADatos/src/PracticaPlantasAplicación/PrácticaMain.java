@@ -76,13 +76,11 @@ public static void cargarEmpleados(ArrayList <Empleado> listaEmpleados) {
 		DataInputStream dis = new DataInputStream(new FileInputStream("empleado.dat"));
 		ObjectInputStream in = new ObjectInputStream(dis);
 		for(Empleado empleado: listaEmpleados) {
-			//int id = dis.readInt();
-			String nombre = empleado.getNombre_empleado();
-			nombre = dis.readUTF();
-			//String password = dis.readUTF();
-			//String cargo = dis.readUTF();
-			//System.out.println("id = " + id + ", nombre = " + nombre + ", password = " + password + ", cargo = " + cargo + ".");
-			System.out.println("nobre:" + nombre);
+			int id = in.readInt();
+			String nombre = in.readUTF();
+			String password = in.readUTF();
+			String cargo = in.readUTF();
+			listaEmpleados.add(empleado);
 		}
 	}catch(IOException e) {
 		e.printStackTrace();
