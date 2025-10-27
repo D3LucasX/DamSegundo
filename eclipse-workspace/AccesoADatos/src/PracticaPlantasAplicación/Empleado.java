@@ -1,18 +1,20 @@
 package PracticaPlantasAplicación;
 
+import java.util.ArrayList;
+
 public class Empleado {
 	private int ide;
 	private String nombre_empleado;
 	private String password;
-	private enum cargo {
-		VENDEDOR, GESTOR
-	}
+	private String cargo;
+	private ArrayList<Empleado> listaEmpleados ;
 
 	public Empleado(int ide, String nombre_empleado, String password) {
 		super();
 		this.ide = ide;
 		this.nombre_empleado = nombre_empleado;
 		this.password = password;
+		this.listaEmpleados = new ArrayList<>();
 	}
 
 	public int getIde() {

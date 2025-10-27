@@ -1,6 +1,8 @@
 package PracticaPlantasAplicación;
 
-public class Planta {
+import java.io.Serializable;
+
+public class Planta implements Serializable{
 	private int codigo;
 	private String nombre;
 	private String foto;

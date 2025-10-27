@@ -1,11 +1,12 @@
 package Ventanas;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
@@ -13,7 +14,10 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
+
 
 public class Ejemplo3 {
 
@@ -50,9 +54,27 @@ public class Ejemplo3 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = (int)monitor.getHeight();
+		int width = (int)monitor.getWidth();
 		frame = new JFrame();
-		frame.setBounds(1920/2-225, 1080/2-150, 450, 300);
+		
+		// Para posicionar la pantalla en el centro:
+			// (resolucion_x/2)-(mi ventana_x/2), (resolucion_y/2)-(mi ventana_y/2)
+		
+		// La comparación de setBounds y de setLocation es que con setBounds tambien puedes jugar
+		// con el tamaño de la ventana a parte de solo posicionarla
+		frame.setBounds(100, 100, 450, 300);
+		
+		// Aqui tambien lo posicionaría en el centro pero solo indica la posicion de la pantalla.
+		frame.setLocation((width/2)-(frame.getWidth()/2), (height/2)-(frame.getHeight()/2));
+		
+		// Setea la localizacion en la pantalla en función de nada, por lo tanto
+		// nos pone la entana en el centro. para localizar las venanas en el centro.
+		//frame.setLocationRelativeTo(null);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		// Card layout lo que hace es que veamos las ventanas superpuestas una encima de otra como 
 		// si fueran cartas.
 		frame.getContentPane().setLayout(new CardLayout(0, 0));

@@ -21,7 +21,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
 public class PrácticaMain {
 public static void cargarXML(ArrayList<Planta> plantas) {
 	try {
@@ -72,27 +71,32 @@ public static void cargarXML(ArrayList<Planta> plantas) {
 		e.printStackTrace();
 	}
 }
-public static void cargarEmpleados() {
+public static void cargarEmpleados(ArrayList <Empleado> listaEmpleados) {
 	try {
 		DataInputStream dis = new DataInputStream(new FileInputStream("empleado.dat"));
-		int id = dis.readInt();
-		String nombre = dis.readUTF();
-		String password = dis.readUTF();
-		String cargo = dis.readUTF();
-		
-		System.out.println("id = " + id + ", nombre = " + nombre + ", password = " + password + ", cargo = " + cargo + ".");
+		ObjectInputStream in = new ObjectInputStream(dis);
+		for(Empleado empleado: listaEmpleados) {
+			//int id = dis.readInt();
+			String nombre = empleado.getNombre_empleado();
+			nombre = dis.readUTF();
+			//String password = dis.readUTF();
+			//String cargo = dis.readUTF();
+			//System.out.println("id = " + id + ", nombre = " + nombre + ", password = " + password + ", cargo = " + cargo + ".");
+			System.out.println("nobre:" + nombre);
+		}
 	}catch(IOException e) {
 		e.printStackTrace();
 	}
 }
 	public static void main(String[] args) {
 		ArrayList <Planta> plantas = new ArrayList<>(); 
+		ArrayList <Empleado> listaEmpleados = new ArrayList<>();
 		// Cargamos documento XML
 		cargarXML(plantas);
 		int longArrList = plantas.size();
 		for(int i = 0; i < longArrList; i++ ) {
 			System.out.println(plantas.get(i));
 		}
-		cargarEmpleados();
+		cargarEmpleados(listaEmpleados);
 	}
 }
