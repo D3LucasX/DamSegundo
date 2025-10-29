@@ -53,11 +53,10 @@ public class PracticaBBDD {
 	}
 
 	public static void mostrarDatosEquipo(Connection conexion, Scanner entrada) {
-		//String regex = "^[a-z A-Z][0-9]";
 		String equipo = "";
 		try {
 			System.out.println("Listado de los equipos");
-			System.out.println("------------------------------");
+			System.out.println("//-----------------------------------//");
 			String ListadoEquipos = "Select Nombre from equipos";
 			PreparedStatement sentencia = conexion.prepareStatement(ListadoEquipos);
 			ResultSet resultado = sentencia.executeQuery();
@@ -65,14 +64,9 @@ public class PracticaBBDD {
 				String nombre = resultado.getString("Nombre");
 				System.out.printf("Equipo %s \n", nombre);
 			}
-			//do {
-				System.out.println("Escribe el nombre del equipo que quieras conocer sus datos: ");
-				equipo = entrada.nextLine();
-				/*if (!equipo.matches(regex)) {
-					System.out.println("Nombre introducido no válido.");
-					System.out.println("Por favor inténtelo de nuevo.");
-				}*/
-			//} while (!equipo.matches(regex));
+			
+			System.out.println("Escribe el nombre del equipo que quieras conocer sus datos: ");
+			equipo = entrada.nextLine();
 			String seleccionEquipo = "Select * from equipos where Nombre = ?";
 			PreparedStatement sentencia2 = conexion.prepareStatement(seleccionEquipo);
 			sentencia2.setString(1, equipo);
@@ -83,6 +77,13 @@ public class PracticaBBDD {
 				String conferencia = resultado2.getString("Conferencia");
 				String division = resultado2.getString("Division");
 				System.out.printf("Nombre %s -- Ciudad %s -- Conferencia %s -- Division %s", nombre, ciudad, conferencia, division);
+			}
+			String ListarJugadoresEquipos = "Select * from jugadores where Nombre_equipo = ?";
+			PreparedStatement sentencia3 = conexion.prepareStatement(ListarJugadoresEquipos);
+			sentencia3.setString(1, equipo);
+			ResultSet resultado3 = sentencia3.executeQuery();
+			while(resultado.next()) {
+				String nombre = resultado3 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
